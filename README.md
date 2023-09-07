@@ -86,12 +86,17 @@ db = pymysql.connect(host="localhost",
 host, user, password, db는 환경에 맞춰서 변경하면 된다.
 
 2. 구현 사항
-2-1. utils/userdao.py 
+
+2-1. utils/userdao.py
+   
 def delete_user(user_info): 정의
+
 def delete_post(post_info): 정의
 
 2-1. app.py(=pybo.py)   
+
 @app.route('/delete_post') 정의
+
 @app.route('/delete_user') 정의
 
 
