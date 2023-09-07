@@ -1,14 +1,14 @@
-# SSG_PROJECT01
+# SSG_4_MINI_PJT_1 VER 0
 
 0. 시작전
-0.1 install python module 
+0-1 install python module 
 ```python
 pip install passlib
 pip install flask_cors
 pip install flask
 pip install mysql
 ```
-0.2 mysql 설치 및 데이터베이스 생성
+0-2 mysql 설치 및 데이터베이스 생성
 <details>
 <summary>데이터 베이스 SQL</summary>
 <div markdown="1">
@@ -85,4 +85,17 @@ db = pymysql.connect(host="localhost",
 ```
 host, user, password, db는 환경에 맞춰서 변경하면 된다.
 
+2. 구현 사항
+2-1. utils/userdao.py 
+def delete_user(user_info): 정의
+def delete_post(post_info): 정의
 
+2-1. app.py(=pybo.py)   
+@app.route('/delete_post') 정의
+@app.route('/delete_user') 정의
+
+
+참고
+- https://github.com/seoyeonK/ssgInC4
+- https://github.com/Suah-Cho?tab=repositories
+- https://github.com/kksung/ssg_web
