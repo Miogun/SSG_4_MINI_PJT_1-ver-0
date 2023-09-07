@@ -210,6 +210,118 @@ def session_():
     
     return redirect(url_for('login'))
 
+@app.route('/create_user')
+def create_user():
+    try:
+        parser = reqparse.RequestParser()
+
+        name = str(request.form.get('name'))
+        ID = str(request.form.get('ID'))
+        password = str(request.form.get('password'))
+        phoneNumber = str(request.form.get('phoneNumber'))
+
+        password_confirm = str(request.form.get('password_confirm'))
+        
+        # args = parser.parse_args()
+
+        if len(ID) < 4 or len(ID) > 16 or not utils.onlyalpha(ID) or not phoneNumber.isdecimal() or not name.isalpha() or password != password_confirm:
+           return redirect(url_for('signup_fail'))
+
+
+        hashed_password = utils.hash_password(str(password))
+
+        user_info = [ name , ID , hashed_password, phoneNumber ]
+        
+        a = userdao.create_user(user_info)
+
+        return redirect(url_for('signup_complete'))
+    
+    except Exception as e :
+        return {'error': str(e)}
+
+@app.route('/delete_user')
+def delete_user():
+    try:
+        parser = reqparse.RequestParser()
+
+        name = str(request.form.get('name'))
+        ID = str(request.form.get('ID'))
+        password = str(request.form.get('password'))
+        phoneNumber = str(request.form.get('phoneNumber'))
+
+        password_confirm = str(request.form.get('password_confirm'))
+        
+        # args = parser.parse_args()
+
+        if len(ID) < 4 or len(ID) > 16 or not utils.onlyalpha(ID) or not phoneNumber.isdecimal() or not name.isalpha() or password != password_confirm:
+           return redirect(url_for('signup_fail'))
+
+
+        hashed_password = utils.hash_password(str(password))
+
+        user_info = [ name , ID , hashed_password, phoneNumber ]
+        
+        a = userdao.createUser(user_info)
+
+        return redirect(url_for('signup_complete'))
+    
+    except Exception as e :
+        return {'error': str(e)}
+
+@app.route('/create_post')
+def create_post():
+    try:
+        parser = reqparse.RequestParser()
+
+        # boardId = str(request.form.get('name'))
+        userId = str(request.form.get('ID'))
+        title = str(request.form.get('title'))
+        content = str(request.form.get('content'))
+        location = str(request.form.get('location'))
+        
+        # args = parser.parse_args()
+    
+
+        # hashed_password = utils.hash_password(str(password))
+
+        post_info = [ userId ,title ,content, location ]
+        
+        a = userdao.create_post(post_info)
+
+        return redirect(url_for('signup_complete'))
+    
+    except Exception as e :
+        return {'error': str(e)}
+    
+@app.route('/delete_post')
+def delete_post():
+    try:
+        parser = reqparse.RequestParser()
+
+        name = str(request.form.get('name'))
+        ID = str(request.form.get('ID'))
+        password = str(request.form.get('password'))
+        phoneNumber = str(request.form.get('phoneNumber'))
+
+        password_confirm = str(request.form.get('password_confirm'))
+        
+        # args = parser.parse_args()
+
+        if len(ID) < 4 or len(ID) > 16 or not utils.onlyalpha(ID) or not phoneNumber.isdecimal() or not name.isalpha() or password != password_confirm:
+           return redirect(url_for('signup_fail'))
+
+
+        hashed_password = utils.hash_password(str(password))
+
+        user_info = [ name , ID , hashed_password, phoneNumber ]
+        
+        a = userdao.create_user(user_info)
+
+        return redirect(url_for('signup_complete'))
+    
+    except Exception as e :
+        return {'error': str(e)}
+
 def main() :
     app.run(debug=True, port=5000)
 
