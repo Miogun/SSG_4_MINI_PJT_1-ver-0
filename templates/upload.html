@@ -1,0 +1,22 @@
+<!DOCtype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+        <form 
+        method="post" 
+        action="/upload    " 
+        enctype="multipart/form-data">
+            <label for="upfile">
+                 업로드파일
+                 <input type="file" id="upfile" name="upfile"/>
+            </label>
+            <button>업로드하기</button>
+        </form>
+{% for file in files %}
+<div><a href="{{file}}">{{file}}</a></div>
+{% endfor %}
+    </body>
+</html>

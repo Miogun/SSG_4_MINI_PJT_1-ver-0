@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.boostrapcd.com/bootstrap/4.5.0/css/bootstrap.min.css"
+</head>
+<br>
+<h1 class="text-center"> <a href="#"> Cha4ser's Free Board!</a></h1>
+</br>
+<body>
+    <button type="button" class="btn btn-outline-info" onclick="location.href='/'"> 돌아가기 </button>
+    <table class="table table-hover table-striped text-center" style="border: lpx solid; ">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data_list %}
+            <tr>
+                <td>{{ i[0] }}</td>
+                <td>{{ i[1] }}</td>
+                <td>{{ i[2] }}</td>
+                <td>{{ i[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+<hr>
+<div>
+    <ul class="pagination justify-content-center">
+
+        <li><a href = "#" style = "margin-right:Spx ;" class="text-secondary"> ◀ </a></li>
+        <li><a href = "#" style = "margin-right:Spx ;" class="text-secondary"> 1 </a></li>
+        <li><a href = "#" style = "margin-right:Spx ;" class="text-secondary"> 2 </a></li>
+        <li><a href = "#" style = "margin-right:Spx ;" class="text-secondary"> 3 </a></li>
+        <li><a href = "#" style = "margin-right:Spx ;" class="text-secondary"> 4 </a></li>
+        <li><a href = "#" style = "margin-right:Spx ;" class="text-secondary"> 5 </a></li>
+        <li><a href = "#" style = "margin-right:Spx ;" class="text-secondary"> ▶ </a></li>
+    </ul>
+</div>
+
+<table class="list" border="0" align="center"cellspacing="0" cellpadding="0" style="width: 100%;">
+    <colgroup>
+        <col width="5%" />
+        <col width="50%" />
+    </colgroup>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>등록날짜</th>
+    </tr>
+    <? while($rs=$db->fetch($res)) { ?>
+        <tr>
+            <td><?=$rs["idx"]?></td>
+            <td><?=$rs["title"]?></td>
+            <td><?=$rs["reg_date"]?></td>
+        </tr>
+    <? } ?>
+</table>
+
+</div>
+<a class="btn btn-outline-info float-right">글쓰기</a>
+
+<form action="/write">
+    <button type="submit" class="btn btn-primary">글쓰기</button>
+</form>
+
+</div>
+
+</html>
